@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text-based Editing of Talking-head Video: Supplemental Materials</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Text-based Editing of Talking-head Video</h1>
+    <h2>Supplemental materials</h2>
+
+    <a href="index.html">[back to index]</a>
+    <br><br>
+
+    <h2>Results: replacing one phrase with another</h2>
+    <p>
+        The following results show replacement of a word or phrase. Ground truth recordings were not used by our method to synthesize new video.
+        After generating the video, we add the ground truth voice so that the video result can be evaluated. <br>
+        For each example we show 3 videos: original sentence, edited result, debug video. Debug video contains from left to right: input to the network, result, frames from which expression data was taken.<br>
+    </p>
+
+    <div id="gallery"></div>
+</body>
+
+<script>
+    var base_dir_inputs = "./videos/input/";
+    var base_dir_outputs = "./videos/add-words/";
+    var video_data = [
+        ["H", "part0036", "RECORDING8__001__EIGHTY-TWO-POINT-TWO",              "NINETY-ONE-POINT-FOUR &rarr; EIGHTY-TWO-POINT-TWO"],
+        ["H", "part0023", "RECORDING8__001__FAKE",                              "REAL &rarr; FAKE"],
+        ["H", "part0014", "RECORDING8__001__FOLKS",                             "PEOPLE &rarr; FOLKS"],
+        ["H", "part0002", "RECORDING8__001__FOX",                               "SPIDER &rarr; FOX"],
+        ["H", "part0049", "RECORDING8__001__FRENCH-TOAST",                      "NAPALM &rarr; FRENCH-TOAST"],
+        ["H", "part0012", "RECORDING8__001__FUN",                               "ENTERTAINING &rarr; FUN"],
+        ["H", "part0027", "RECORDING8__001__MY",                                "YOUR &rarr; MY"],
+        ["H", "part0034", "RECORDING8__001__NINETY-FIVE-DEGREES-FAHRENHEIT",    "THIRTY-FIVE-DEGREES-CELSIUS &rarr; NINETY-FIVE-DEGREES-FAHRENHEIT"],
+        ["H", "part0043", "RECORDING8__001__WHY-ARE-YOU",                       "WHERE-FORE-ART-THOU &rarr; WHY-ARE-YOU"],
+        ["H", "part0048", "RECORDING8__002__BIG-EYES",                          "A-TERRIBLE-BIG-MOUTH &rarr; BIG-EYES"]
+    ];
+
+    for (var i = 0; i < video_data.length; ++i) {
+        var html = '<p>W3: Original Sentence ' + i + '</p>';
+        $(html).appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir_inputs + video_data[i][0] + "/" + video_data[i][1] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        html = '<p>W3: Edited Result ' + i + ': ' + video_data[i][3] + '</p>';
+        $(html).appendTo($("#gallery"));
+        var vid_element = $('<video />', {
+            src: base_dir_outputs + video_data[i][0] + "/" + video_data[i][2] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        html = '<p>W3: Debug Video ' + i + '</p>';
+        $(html).appendTo($("#gallery"));
+        var vid_element = $('<video />', {
+            src: base_dir_outputs + video_data[i][0] + "/" + video_data[i][2] + "_debug.mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        $('<br />').appendTo($("#gallery"));
+        $('<hr />').appendTo($("#gallery"));
+        $('<br />').appendTo($("#gallery"));
+    }
+</script>
+</html>

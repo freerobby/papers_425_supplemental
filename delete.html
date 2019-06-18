@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text-based Editing of Talking-head Video: Supplemental Materials</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Text-based Editing of Talking-head Video</h1>
+    <h2>Supplemental materials</h2>
+
+    <a href="index.html">[back to index]</a>
+    <br><br>
+
+    <h2>Results: deleting words</h2>
+    <p>
+        Unwanted repeating words or cumbersome phrases can be removed by the video editor using our system. The first example is especially challenging due to camera panning and hand motion.
+    </p>
+
+    <div id="gallery"></div>
+</body>
+
+<script>
+    var base_dir = "./videos/delete-words/";
+    var video_data = [
+        ["y-o", "y-d", 'W4: Edited Result 0: Removed one "and" from an unnecessary repeat "and and".'],
+        ["a-o", "a-d", 'W4: Edited Result 1: Deleted "or worry".']
+    ];
+
+
+    for (var i = 0; i < video_data.length; ++i) {
+
+        $('<p>' + video_data[i][2] + '</p>').appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + video_data[i][0] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + video_data[i][1] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+    }
+</script>
+</html>

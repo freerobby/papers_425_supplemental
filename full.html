@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text-based Editing of Talking-head Video: Supplemental Materials</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Text-based Editing of Talking-head Video</h1>
+    <h2>Supplemental materials</h2>
+
+    <a href="index.html">[back to index]</a>
+    <br><br>
+
+    <h2>Full sentence synthesis using synthetic voice</h2>
+    <p>
+        While it is not the main motivation behind our system, we can also generate full sentences (e.g. to give a face to virtual assistants). We also show subsequences from which we extracted expression parameters. Notice how different the subsequences are, yet we still produce a coherent video.
+    </p>
+
+    <div id="gallery"></div>
+</body>
+
+<script>
+    var base_dir = "./videos/full/";
+    var video_data = [
+        "a-icecream-debug"
+    ];
+
+
+    for (var i = 0; i < video_data.length; ++i) {
+
+        var vid_element = $('<video />', {
+            src: base_dir + video_data[i] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        $('<br />').appendTo($("#gallery"));
+    }
+</script>
+</html>

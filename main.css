@@ -1,0 +1,9 @@
+body {
+    font: 18px Trebuchet MS, Arial, sans-serif;
+    line-height: 30px;
+    letter-spacing: 0.3px;
+}
+
+video {
+    border:1px solid black;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text-based Editing of Talking-head Video: Supplemental Materials</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Text-based Editing of Talking-head Video</h1>
+    <h2>Supplemental materials</h2>
+
+    <a href="index.html">[back to index]</a>
+    <br><br>
+
+    <h2>The importance of parameter blending</h2>
+    <p>
+        We show results with and without parameter blending. Notice how transitions are "jumpy" without blending.
+    </p>
+
+    <div id="gallery"></div>
+</body>
+
+<script>
+    var base_dir = "./videos/param-blend/";
+    var video_data = [
+        ["noblend-a", "blend-a"],
+        ["noblend-y", "blend-y"]
+    ];
+
+
+    for (var i = 0; i < video_data.length; ++i) {
+        var text_prefix = "W9: Result " + i + ": ";
+
+        $('<p>' + text_prefix + 'No blending</p>').appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + video_data[i][0] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        $('<p>' + text_prefix + 'With blending</p>').appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + video_data[i][1] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        $('<hr />').appendTo($("#gallery"));
+    }
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text-based Editing of Talking-head Video: Supplemental Materials</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Text-based Editing of Talking-head Video</h1>
+    <h2>Supplemental materials</h2>
+
+    <a href="index.html">[back to index]</a>
+    <br><br>
+
+    <h2>Comparison: using less data</h2>
+    <p>
+        We show results using visemes from 50, 10 and 5 percent of the full input video.
+    </p>
+
+    <div id="gallery"></div>
+</body>
+
+<script>
+    var base_dir = "./videos/less-data/";
+
+    var video_data = [
+        "RECORDING9__001__NINETY-FIVE-DEGREES-SP-FAHRENHEIT",
+        "RECORDING9__001__BIG-SP-EYES",
+        "RECORDING9__001__EIGHTY-TWO-SP-POINT-TWO",
+        "RECORDING9__001__FAKE",
+        "RECORDING9__001__FOLKS",
+        "RECORDING9__001__FOX",
+        "RECORDING9__001__FRENCH-TOAST",
+        "RECORDING9__001__FUN",
+        "RECORDING9__001__ICE-CREAM",
+        "RECORDING9__001__MY",
+        "RECORDING9__001__NO-I-DID-NOT",
+        "RECORDING9__001__NO",
+        "RECORDING9__001__WHY-ARE-YOU",
+        "RECORDING9__001__WOULDN'T"
+    ];
+
+
+    for (var i = 0; i < video_data.length; ++i) {
+        var text_prefix = "W8: Result " + i + ": ";
+
+        $('<p>' + text_prefix + '5% data.</p>').appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + "05percent/" + video_data[i] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        $('<p>' + text_prefix + '10% data.</p>').appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + "10percent/" + video_data[i] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        $('<p>' + text_prefix + '50% data.</p>').appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + "50percent/" + video_data[i] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+
+        $('<hr />').appendTo($("#gallery"));
+        $('<br />').appendTo($("#gallery"));
+    }
+</script>
+</html>

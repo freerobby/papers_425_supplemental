@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text-based Editing of Talking-head Video: Supplemental Materials</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Text-based Editing of Talking-head Video</h1>
+    <h2>Supplemental materials</h2>
+
+    <a href="index.html">[back to index]</a>
+    <br><br>
+
+    <h2>Test: various phrase lengths and match scores</h2>
+    <p>
+        We tested our system with various synthesized phrases (selected randomly from a list of "things that smell").
+        We found that phrase length does not directly correlate with result quality. Other factors, such as the visemes that comprise the phrase and phoneme alignment quality influence the final result.
+    </p>
+
+    <div id="gallery"></div>
+</body>
+
+<script>
+    var base_dir = "./videos/smell/";
+
+    var video_data = [
+        ["RECORDING10__001__APPLE-PIE_debug",            "APPLE-PIE"],
+        ["RECORDING10__001__BACON_debug",                "BACON"],
+        ["RECORDING10__001__BARBECUE_debug",             "BARBECUE"],
+        ["RECORDING10__001__BREAD_debug",                "BREAD"],
+        ["RECORDING10__001__BURNING-WOOD_debug",         "BURNING-WOOD"],
+        ["RECORDING10__001__CHOCOLATE_debug",            "CHOCOLATE"],
+        ["RECORDING10__001__CINNAMON-ROLLS_debug",       "CINNAMON-ROLLS"],
+        ["RECORDING10__001__CITRUS_debug",               "CITRUS"],
+        ["RECORDING10__001__COLD-MOUNTAIN-AIR_debug",    "COLD-MOUNTAIN-AIR"],
+        ["RECORDING10__001__COOKIES_debug",              "COOKIES"],
+        ["RECORDING10__001__FRENCH-TOAST_debug",         "FRENCH-TOAST"],
+        ["RECORDING10__001__FRESH-BASIL_debug",          "FRESH-BASIL"],
+        ["RECORDING10__001__FRESHLY-BAKED-BREAD_debug",  "FRESHLY-BAKED-BREAD"],
+        ["RECORDING10__001__GARLIC_debug",               "GARLIC"],
+        ["RECORDING10__001__GASOLINE_debug",             "GASOLINE"],
+        ["RECORDING10__001__GROUND-COFFEE_debug",        "GROUND-COFFEE"],
+        ["RECORDING10__001__LAVENDER_debug",             "LAVENDER"],
+        ["RECORDING10__001__LILACS_debug",               "LILACS"],
+        ["RECORDING10__001__MINT_debug",                 "MINT"],
+        ["RECORDING10__001__MOWED-GRASS_debug",          "MOWED-GRASS"],
+        ["RECORDING10__001__ORANGES_debug",              "ORANGES"],
+        ["RECORDING10__001__PIZZA_debug",                "PIZZA"],
+        ["RECORDING10__001__POPCORN_debug",              "POPCORN"],
+        ["RECORDING10__001__RAIN_debug",                 "RAIN"],
+        ["RECORDING10__001__ROSES_debug",                "ROSES"],
+        ["RECORDING10__001__SEA-BREEZE_debug",           "SEA-BREEZE"],
+        ["RECORDING10__001__VANILLA_debug",              "VANILLA"]
+    ];
+
+
+    for (var i = 0; i < video_data.length; ++i) {
+        var text_caption = "W11: Result " + i + ": " + video_data[i][1];
+
+        $('<p>' + text_caption + '</p>').appendTo($("#gallery"));
+
+        var vid_element = $('<video />', {
+            src: base_dir + video_data[i][0] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#gallery"));
+
+        $('<br />').appendTo($("#gallery"));
+    }
+</script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text-based Editing of Talking-head Video: Supplemental Materials</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Text-based Editing of Talking-head Video</h1>
+    <h2>Supplemental materials</h2>
+
+    <a href="index.html">[back to index]</a>
+    <br><br>
+
+    <h2>User Study</h2>
+    <p>
+        Below are all the videos used in our user study.
+    </p>
+
+    <p>Ground truth videos. These are real recordings that have the same transcript as our edited result.</p>
+    <div id="real"></div>
+    <hr>
+
+    <p>Input videos. These are real recordings that were given as input to our system</p>
+    <div id="real_orig"></div>
+    <hr>
+
+    <p>Our results. These are synthesized videos.</p>
+    <div id="fake"></div>
+</body>
+
+<script>
+    var base_dir = "./videos/user-study/";
+    var video_data = [
+        ["fake", "ayush", "100"],
+        ["fake", "ayush", "101"],
+        ["fake", "ayush", "102"],
+        ["fake", "ayush", "103"],
+        ["fake", "ayush", "104"],
+        ["fake", "ayush", "105"],
+        ["fake", "jane",  "000"],
+        ["fake", "jane",  "001"],
+        ["fake", "jane",  "002"],
+        ["fake", "jane",  "003"],
+        ["fake", "jane",  "004"],
+        ["fake", "jane",  "005"],
+        ["real", "ayush", "112"],
+        ["real", "ayush", "113"],
+        ["real", "ayush", "114"],
+        ["real", "ayush", "115"],
+        ["real", "ayush", "116"],
+        ["real", "ayush", "117"],
+        ["real", "jane",  "012"],
+        ["real", "jane",  "013"],
+        ["real", "jane",  "014"],
+        ["real", "jane",  "015"],
+        ["real", "jane",  "016"],
+        ["real", "jane",  "017"],
+        ["real_orig", "ayush", "106"],
+        ["real_orig", "ayush", "107"],
+        ["real_orig", "ayush", "108"],
+        ["real_orig", "ayush", "109"],
+        ["real_orig", "ayush", "110"],
+        ["real_orig", "ayush", "111"],
+        ["real_orig", "jane",  "006"],
+        ["real_orig", "jane",  "007"],
+        ["real_orig", "jane",  "008"],
+        ["real_orig", "jane",  "009"],
+        ["real_orig", "jane",  "010"],
+        ["real_orig", "jane",  "011"]
+
+    ];
+
+
+    for (var i = 0; i < video_data.length; ++i) {
+
+        var vid_element = $('<video />', {
+            src: base_dir + video_data[i][0] + "/" + video_data[i][1] + "/" + video_data[i][2] + ".mp4",
+            type: "video/mp4",
+            controls: true,
+            height: 512
+        });
+        vid_element.appendTo($("#" + video_data[i][0]));
+    }
+</script>
+</html>
